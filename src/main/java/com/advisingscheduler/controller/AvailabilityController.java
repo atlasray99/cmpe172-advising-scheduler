@@ -96,8 +96,8 @@ public class AvailabilityController {
 
     @PostMapping("/manage-slots/add")
     public String addSlot(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime startTime,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime endTime,
             HttpSession session, Model model) {
         Integer advisorId = (Integer) session.getAttribute(SESSION_ADVISOR_ID);
         if (advisorId == null) {
