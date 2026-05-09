@@ -54,6 +54,7 @@ public class AppointmentService {
                 AvailabilitySlot slot = slotOpt.get();
                 if (slot.isBooked()) {
                     logger.warn("Slot {} is already booked — rejecting request from client {}", slotId, clientId);
+                    metrics.recordBookingConflict();
                     throw new IllegalStateException("Slot " + slotId + " is already booked");
                 }
 
